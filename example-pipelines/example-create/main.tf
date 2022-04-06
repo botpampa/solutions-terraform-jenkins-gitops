@@ -25,14 +25,14 @@ locals {
   Google Provider Configuration
  *****************************************/
 provider "google" {
-  project     = "${var.environment}-livello"
+  project     = "livello-${var.environment}"
   region      = "us-central1"
 }
 
 
 module "cloud-storage" {
      source        = "../../example-create/cloud-storage"
-     project_id    = "${var.environment}-livello"
+     project_id    = "livello-${var.environment}"
      name_id       = local.bucket_name
      location_id   = "us-central1"
 }
