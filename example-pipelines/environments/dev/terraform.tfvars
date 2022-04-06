@@ -1,2 +1,2 @@
-project_id = "dev-livello"
+project_id = "livello-dev"
 environment = "dev"
