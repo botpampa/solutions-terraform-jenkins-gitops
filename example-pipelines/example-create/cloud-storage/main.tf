@@ -14,9 +14,30 @@
  * limitations under the License.
  */
 
-terraform {
-  backend "gcs" {
-    bucket = "jenkins-livello-tfstate"
-    prefix = "jenkins"
-  }
+module "bucket" {
+  source = "../../modules/gcp-cloud-storage"
+
+  name       = var.name_id
+  project_id = var.project_id
+  location   = var.location_id
+  
+ /*
+  folders = {[
+      var.name_id = ["var.folder_a", "var.folder_b"]
+  ]}
+ */
+  lifecycle_rules = [{
+    action = {
+      type = "Delete"
+    }
+    condition = {
+      age        = 365
+      with_state = "ANY"
+    }
+  }]
+
+  iam_members = [{
+    role   = "roles/storage.objectViewer"
+    member = "group:test-gcp-ops@test.infra.cft.tips"
+  }]
 }

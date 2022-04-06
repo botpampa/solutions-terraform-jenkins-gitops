@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,17 @@
  * limitations under the License.
  */
 
-terraform {
-  backend "gcs" {
-    bucket = "jenkins-livello-tfstate"
-    prefix = "jenkins"
-  }
+variable "project_id" {
+  description = "The ID of the project in which to provision resources."
+  type        = string
+}
+
+variable "name_id"{
+  description = "The name of the project in which to provision resources."
+  type        = string
+}
+
+variable "location_id"{
+  description = "The location of the project in which to provision resources."
+  type        = string
 }

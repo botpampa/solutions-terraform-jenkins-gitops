@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,17 @@
  */
 
 terraform {
-  backend "gcs" {
-    bucket = "jenkins-livello-tfstate"
-    prefix = "jenkins"
+  required_version = ">= 0.13"
+  required_providers {
+
+    google = {
+      source  = "hashicorp/google"
+      version = ">= 3.53, < 5.0"
+    }
   }
+
+  provider_meta "google" {
+    module_name = "blueprints/terraform/terraform-google-cloud-storage:simple_bucket/v3.1.0"
+  }
+
 }
