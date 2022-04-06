@@ -15,7 +15,7 @@
 
 terraform {
   backend "gcs" {
-    bucket = "prod-livello-tfstate"
+    bucket = "livello-prod-tfstate"
     prefix = "env/prod"
   }
 }
