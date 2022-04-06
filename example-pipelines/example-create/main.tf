@@ -18,7 +18,7 @@
   Locals
  *****************************************/
 locals {
-  bucket_name = "livelo-bucket-${var.environment}"
+  bucket_name = "l-bucket-${var.environment}"
 }
 
 /*****************************************
